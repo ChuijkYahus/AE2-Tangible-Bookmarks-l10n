@@ -77,10 +77,10 @@ jobs:
 
                 changelog-file: 'CHANGELOG.md' 
                 game-versions: ${{ needs.build.outputs.mc_version }}
-                loaders: ${{ needs.build.outputs.mc_loader }}
+                loaders: ${{ needs.build.outputs.mod_loader }}
                 version-type: ${{ needs.build.outputs.version_type }}
 
-                files: 'build/libs/*.jar'
+                files: '**/*.jar'
                 name: ${{ needs.build.outputs.artifact_name }}
                 version: ${{ needs.build.outputs.mc_version }}-${{ needs.build.outputs.mod_version }}
                 dependencies: |
@@ -102,10 +102,10 @@ jobs:
                 
                 changelog-file: 'CHANGELOG.md' 
                 game-versions: ${{ needs.build.outputs.mc_version }}
-                loaders: ${{ needs.build.outputs.mc_loader }}
+                loaders: ${{ needs.build.outputs.mod_loader }}
                 version-type: ${{ needs.build.outputs.version_type }}
 
-                files: 'build/libs/*.jar'
+                files: '**/*.jar'
                 name: ${{ needs.build.outputs.artifact_name }}
                 version: ${{ needs.build.outputs.mc_version }}-${{ needs.build.outputs.mod_version }}
                 dependencies: |
