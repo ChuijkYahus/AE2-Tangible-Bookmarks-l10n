@@ -2,5 +2,6 @@
   "key.categories.ae2tb": "AE2 Tangible Bookmarks",
   "key.ae2tb.pickup_single_item": "Single Item Pickup",
   "key.ae2tb.pickup_set_item": "Stack Item Pickup",
-  "key.ae2tb.picked_item_autocrafting": "Item Autocrafting"
+  "key.ae2tb.picked_item_autocrafting": "Item Autocrafting",
+  "config.emi.group.ae2tb": "AE2 Tangible Bookmarks"
 }

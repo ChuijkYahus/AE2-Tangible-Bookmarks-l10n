@@ -34,8 +34,8 @@ jobs:
               echo "mod_loader=$mod_loader" >> $GITHUB_OUTPUT
               version_type=$(grep '^version_type=' gradle.properties | cut -d'=' -f2 | tr -d ' \r')
               echo "version_type=$version_type" >> $GITHUB_OUTPUT
-              echo artifact_path=build/libs/ExtendedTerminal-$mc_version-$mod_version.jar >> $GITHUB_OUTPUT
-              echo artifact_name=ExtendedTerminal-$mc_version-$mod_version >> $GITHUB_OUTPUT
+              echo artifact_path=build/libs/AE2-TangibleBookmarks-$mc_version-$mod_version.jar >> $GITHUB_OUTPUT
+              echo artifact_name=AE2-TangibleBookmarks-$mc_version-$mod_version >> $GITHUB_OUTPUT
           - name: Setup Java
             uses: actions/setup-java@v4
             with:

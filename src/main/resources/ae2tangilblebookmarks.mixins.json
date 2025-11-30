@@ -3,12 +3,16 @@
   "minVersion": "0.8",
   "package": "me.myogoo.ae2tangilblebookmarks.mixin",
   "compatibilityLevel": "JAVA_21",
+  "plugin": "me.myogoo.ae2tangilblebookmarks.mixin.Plugin",
   "mixins": [
-    "CombinedRecipeFocusSourceMixin",
-    "FocusInputHandlerMixin",
-    "MEStorageMenuStorageMixin"
+    "MEStorageMenuStorageMixin",
+    "emi.EmiConfigMixin",
+    "emi.EmiScreenManagerMixin",
+    "jei.CombinedRecipeFocusSourceMixin",
+    "jei.FocusInputHandlerMixin"
   ],
   "client": [
+    "emi.EmiConfigScreenMixin"
   ],
   "injectors": {
     "defaultRequire": 1
