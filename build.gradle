@@ -16,6 +16,21 @@ repositories {
         name = "Jared's maven"
         url = "https://maven.blamejared.com/"
     }
+    //rei
+    maven {
+        url "https://maven.shedaniel.me"
+    }
+
+    //emi
+    maven {
+        name = "TerraformersMC"
+        url = "https://maven.terraformersmc.com/"
+    }
+
+    //curseMaven
+    maven {
+        url "https://cursemaven.com"
+    }
 }
 
 base {
@@ -103,9 +118,29 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 dependencies {
     compileOnly "org.appliedenergistics:appliedenergistics2:${AE2_version}"
     runtimeOnly "org.appliedenergistics:appliedenergistics2:${AE2_version}"
-    compileOnly "mezz.jei:jei-${minecraft_version}-neoforge-api:${JEI_version}"
+
     compileOnly "mezz.jei:jei-${minecraft_version}-neoforge:${JEI_version}"
-    runtimeOnly "mezz.jei:jei-${minecraft_version}-neoforge:${JEI_version}"
+    compileOnly "me.shedaniel:RoughlyEnoughItems-neoforge:${REI_version}"
+    compileOnly "dev.emi:emi-neoforge:${EMI_version}"
+
+    switch (project.itemListMod) {
+        case "jei":
+            runtimeOnly "mezz.jei:jei-${minecraft_version}-neoforge:${JEI_version}"
+            runtimeOnly "curse.maven:ae2-jei-integration-1074338:5748513"
+            break;
+        case "rei":
+            runtimeOnly "me.shedaniel:RoughlyEnoughItems-neoforge:${REI_version}"
+            break;
+        case "emi":
+            runtimeOnly "dev.emi:emi-neoforge:${EMI_version}"
+            break;
+        case "emjei":
+            runtimeOnly "mezz.jei:jei-${minecraft_version}-neoforge:${JEI_version}"
+            runtimeOnly "curse.maven:ae2-jei-integration-1074338:5748513"
+            runtimeOnly "dev.emi:emi-neoforge:${EMI_version}"
+            break;
+
+    }
 
 }
 

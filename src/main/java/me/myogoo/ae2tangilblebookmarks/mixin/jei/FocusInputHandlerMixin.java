@@ -1,11 +1,10 @@
-package me.myogoo.ae2tangilblebookmarks.mixin;
+package me.myogoo.ae2tangilblebookmarks.mixin.jei;
 
-import appeng.core.network.ServerboundPacket;
 import appeng.helpers.InventoryAction;
 import appeng.menu.me.common.MEStorageMenu;
-import com.mojang.blaze3d.platform.InputConstants;
 import me.myogoo.ae2tangilblebookmarks.client.KeyBindings;
-import me.myogoo.ae2tangilblebookmarks.network.serverbound.AE2TBInteractionPacket;
+import me.myogoo.ae2tangilblebookmarks.integration.ae2.HandleInteraction;
+import me.myogoo.ae2tangilblebookmarks.mixin.MEStorageMenuStorageMixin;
 import mezz.jei.common.input.IInternalKeyMappings;
 import mezz.jei.gui.input.CombinedRecipeFocusSource;
 import mezz.jei.gui.input.IClickableIngredientInternal;
@@ -14,8 +13,6 @@ import mezz.jei.gui.input.UserInput;
 import mezz.jei.gui.input.handlers.FocusInputHandler;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.gui.screens.Screen;
-import net.neoforged.neoforge.client.settings.KeyModifier;
-import net.neoforged.neoforge.network.PacketDistributor;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -24,7 +21,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -66,14 +62,7 @@ public class FocusInputHandlerMixin {
 
             for (IClickableIngredientInternal<?> clicked : ingredientUnderMouse) {
                 var itemStack = clicked.getElement().getTypedIngredient().getItemStack();
-                if (itemStack.isEmpty()) continue;
-                if (menu.isClientSide()) {
-                    if (action != null) {
-                        ServerboundPacket packet = new AE2TBInteractionPacket(menu.containerId, itemStack.get(), action);
-                        PacketDistributor.sendToServer(packet);
-                        return;
-                    }
-                }
+                HandleInteraction.sendPacket(menu, itemStack.get(), action);
             }
         }
     }

@@ -8,28 +8,28 @@ import org.lwjgl.glfw.GLFW;
 
 public class KeyBindings {
     public static final KeyMapping PICKUP_SINGLE_ITEM = new KeyMapping(
-            "key.ae2tb.pickup_single_item",
+            TranslateKey.PICKUP_SINGLE_ITEM,
             KeyConflictContext.GUI,
             InputConstants.Type.MOUSE,
             GLFW.GLFW_MOUSE_BUTTON_MIDDLE,
-            "key.categories.ae2tb"
+            TranslateKey.CATEGORY
     );
 
     public static final KeyMapping PICKUP_SET_ITEM = new KeyMapping(
-            "key.ae2tb.pickup_set_item",
+            TranslateKey.PICKUP_SET_ITEM,
             KeyConflictContext.GUI,
             KeyModifier.SHIFT,
             InputConstants.Type.MOUSE,
             GLFW.GLFW_MOUSE_BUTTON_MIDDLE,
-            "key.categories.ae2tb"
+            TranslateKey.CATEGORY
     );
 
     public static final KeyMapping PICKED_ITEM_AUTOCRAFTING = new KeyMapping(
-            "key.ae2tb.picked_item_autocrafting",
+            TranslateKey.PICKED_ITEM_AUTOCRAFTING,
             KeyConflictContext.GUI,
             KeyModifier.CONTROL,
             InputConstants.Type.MOUSE,
             GLFW.GLFW_MOUSE_BUTTON_MIDDLE,
-            "key.categories.ae2tb"
+            TranslateKey.CATEGORY
     );
 }

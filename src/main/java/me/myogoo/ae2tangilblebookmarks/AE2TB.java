@@ -6,13 +6,11 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 
-// The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(AE2TB.MODID)
 public class AE2TB {
     public static final String MODID = "ae2tangilblebookmarks";
 
     public AE2TB(IEventBus modEventBus, ModContainer modContainer) {
-
         modEventBus.addListener(AE2TBNetwork::init);
     }
 

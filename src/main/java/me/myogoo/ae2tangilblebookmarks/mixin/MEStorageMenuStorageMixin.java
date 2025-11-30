@@ -16,5 +16,4 @@ public interface MEStorageMenuStorageMixin {
 
     @Invoker("handleNetworkInteraction")
     void callHandleNetworkInteraction(ServerPlayer player, AEKey clickedKey, InventoryAction action);
-
 }

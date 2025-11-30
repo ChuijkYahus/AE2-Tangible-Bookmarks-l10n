@@ -1,4 +1,4 @@
-package me.myogoo.ae2tangilblebookmarks.mixin;
+package me.myogoo.ae2tangilblebookmarks.mixin.jei;
 
 import mezz.jei.common.input.IInternalKeyMappings;
 import mezz.jei.gui.input.CombinedRecipeFocusSource;
