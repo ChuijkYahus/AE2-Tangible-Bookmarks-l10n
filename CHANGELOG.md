@@ -1,2 +1,2 @@
 ## Feature
-- EMI Support
+- REI Support
