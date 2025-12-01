@@ -7,7 +7,8 @@ on:
         branches:
             - '1.20.1'
             - '1.21.1'
-        paths: 'CHANGELOG.md'
+        paths:
+            - 'CHANGELOG.md'
 
 jobs:
     build:
@@ -85,6 +86,9 @@ jobs:
                 version: ${{ needs.build.outputs.mc_version }}-${{ needs.build.outputs.mod_version }}
                 dependencies: |
                     ae2(required){modrinth:XxWD5pD3}{curseforge:223794}
+                    jei(optional){modrinth:u6dRKJwZ}{curseforge:238222}
+                    emi(optional){modrinth:fRiHVvU7}{curseforge:580555}
+                    rei(optional){modrinth:nfn13YXA}{curseforge:310111}
     publish-to-modrinth:
         if: github.event.pull_request.merged == true
         runs-on: ubuntu-latest
@@ -110,3 +114,6 @@ jobs:
                 version: ${{ needs.build.outputs.mc_version }}-${{ needs.build.outputs.mod_version }}
                 dependencies: |
                     ae2(required){modrinth:XxWD5pD3}{curseforge:223794}
+                    jei(optional){modrinth:u6dRKJwZ}{curseforge:238222}
+                    emi(optional){modrinth:fRiHVvU7}{curseforge:580555}
+                    rei(optional){modrinth:nfn13YXA}{curseforge:310111}

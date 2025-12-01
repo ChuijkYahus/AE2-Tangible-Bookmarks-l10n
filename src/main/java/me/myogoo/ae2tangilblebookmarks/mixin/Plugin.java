@@ -27,6 +27,10 @@ public class Plugin implements IMixinConfigPlugin {
             return isLoaded("emi");
         }
 
+        if(mixinClassName.contains("rei")) {
+            return isLoaded("rei");
+        }
+
         if (mixinClassName.contains("jei")) {
             return !isLoaded("emi") && isLoaded("jei");
         }

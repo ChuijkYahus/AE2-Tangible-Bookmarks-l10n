@@ -12,7 +12,8 @@
     "jei.FocusInputHandlerMixin"
   ],
   "client": [
-    "emi.EmiConfigScreenMixin"
+    "emi.EmiConfigScreenMixin",
+    "rei.ScreenOverlayImplMixin"
   ],
   "injectors": {
     "defaultRequire": 1

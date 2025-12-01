@@ -53,7 +53,6 @@ public class FocusInputHandlerMixin {
         var minecraft = rawScreen.getMinecraft();
         var localPlayer = minecraft.player;
 
-
         if (localPlayer != null && localPlayer.containerMenu instanceof MEStorageMenu menu) {
             var menuMixin = ((MEStorageMenuStorageMixin) menu);
             List<IClickableIngredientInternal<?>> ingredientUnderMouse = focusSource.getIngredientUnderMouse(input, keyBindings)
