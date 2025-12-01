@@ -7,7 +7,8 @@ on:
         branches:
             - '1.20.1'
             - '1.21.1'
-        paths: 'CHANGELOG.md'
+        paths:
+            - 'CHANGELOG.md'
 
 jobs:
     build:
