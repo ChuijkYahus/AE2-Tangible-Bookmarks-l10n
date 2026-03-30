@@ -23,7 +23,7 @@ public class EmiFavoritesMixin {
                     shift = At.Shift.AFTER
             ), locals = LocalCapture.CAPTURE_FAILSOFT)
     private static void a(JsonArray arr, CallbackInfo ci, @Local(name = "json") JsonObject json) {
-        BookmarkEventHandler.registerEvent(BookmarkEventHandler.AE2TBookmarkEvent.LOAD, () -> {
-        });
+//        BookmarkEventHandler.registerEvent(BookmarkEventHandler.AE2TBookmarkEvent.LOAD, () -> {
+//        });
     }
 }

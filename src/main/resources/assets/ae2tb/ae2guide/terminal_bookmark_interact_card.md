@@ -9,11 +9,11 @@ categories:
 item_ids:
   - terminal_bookmark_interact_card
 ---
-
+# Terminal Bookmark Interact Card
 <ItemImage id="ae2tb:terminal_bookmark_interact_card" scale={3}/>
 
 
-The Terminal Bookmark Interact Card enables direct interaction between AE2 terminals and bookmarked items from JEI, EMI, and REI.
+The <ItemLink id="ae2tb:terminal_bookmark_interact_card"/> enables direct interaction between AE2 terminals and bookmarked items from JEI, EMI, and REI.
 
 Once the card is installed, bookmark panels stop being passive references and become shortcuts into your ME network.
 
