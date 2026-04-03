@@ -59,7 +59,7 @@ jobs:
           version-type: ${{ steps.vars.outputs.version_type }}
 
           files: 'build/libs/*.jar'
-          name: AE2-Fluid-Crafting-Terminal-${{ steps.vars.outputs.mc_version }}-${{ steps.vars.outputs.mod_version }}
+          name: AE2-TangibleBookmarks-${{ steps.vars.outputs.mc_version }}-${{ steps.vars.outputs.mod_version }}
           version: ${{ steps.vars.outputs.mc_version }}-${{ steps.vars.outputs.mod_version }}
 
           dependencies: |
