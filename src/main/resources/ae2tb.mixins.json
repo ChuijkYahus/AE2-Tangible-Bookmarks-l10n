@@ -5,16 +5,16 @@
   "compatibilityLevel": "JAVA_21",
   "plugin": "me.myogoo.ae2tb.mixin.Plugin",
   "mixins": [
-    "MEStorageMenuStorageMixin",
+    "MEStorageMenuStorageMixin"
+  ],
+  "client": [
     "emi.EmiConfigMixin",
+    "emi.EmiConfigScreenMixin",
     "emi.EmiFavoritesMixin",
     "emi.EmiScreenManagerMixin",
     "emi.ItemEmiStackMixin",
     "jei.CombinedRecipeFocusSourceMixin",
-    "jei.FocusInputHandlerMixin"
-  ],
-  "client": [
-    "emi.EmiConfigScreenMixin",
+    "jei.FocusInputHandlerMixin",
     "rei.ScreenOverlayImplMixin"
   ],
   "injectors": {
