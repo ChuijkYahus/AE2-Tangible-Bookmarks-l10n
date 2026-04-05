@@ -12,7 +12,7 @@ import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
 
 @Mod(value = AE2TB.MODID, dist = Dist.CLIENT)
 public final class AE2TBClient {
-    private AE2TBClient(IEventBus modEventBus) {
+    public AE2TBClient(IEventBus modEventBus) {
         modEventBus.addListener(AE2TBClient::registerKeyMappings);
         MyotusAPI.configRegistrar().registerTerminalConfigTab(new MyoConfigTab(
                 TranslateKey.CATEGORY.getTranslate(),
