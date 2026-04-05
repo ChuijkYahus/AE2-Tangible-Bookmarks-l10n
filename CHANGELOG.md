@@ -1,7 +1,6 @@
 # Changelog
 
-## Features
-- Update Myotus to 19.0.5
 
 ## Bug Fixes
-- Fix Crash when server load
+- Fix Crash
+- Fixed an issue in REI where input would not register if the key binding did not include a mouse input
