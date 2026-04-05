@@ -1,5 +1,7 @@
 # Changelog
 
+## Features
+- Add Translate `zh_cn`. thanks to [@ChuijkYahus](https://github.com/ChuijkYahus)
 
 ## Bug Fixes
 - Fix Crash
