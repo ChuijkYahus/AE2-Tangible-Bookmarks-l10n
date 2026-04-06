@@ -1,8 +1,8 @@
-<div style="text-align:center">
+<p align="center">
 <img src="readme/AE2TB.png" width="200">
-<h1>AE2 TangibleBookmarks</h1>
-</div>
-<p style="text-align: center"> 
+</p>
+<h1 align="center">AE2 TangibleBookmarks</h1>
+<p align="center">
 <a href="https://www.curseforge.com/minecraft/mc-mods/ae2-tangible-bookmarks">
 <img src="https://img.shields.io/curseforge/dt/1394275?style=flat-square&logo=curseforge&color=f16436">
 </a>
@@ -14,6 +14,7 @@
 <img src="https://img.shields.io/github/license/mc-myo-s-mod/AE2-Tangible-Bookmarks?style=flat-square">
 
 </p>
+
 
 ## Feature
 
