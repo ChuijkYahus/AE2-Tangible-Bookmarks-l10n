@@ -15,13 +15,7 @@
 
 </p>
 
-## Feature
-
-*   EMI/JEI support for experiences like the AE2's Crafting Terminal
-*   The Ultimate All-in-One: Crafting, Smithing, Stonecutting, and Anvil—All in a single terminal
-*   Go Beyond 3x3: Integrated support for extended crafting and custom grid sizes.
-*   You can add **Extended Terminal** to your modpack.
-
+Bookmark your frequently used items in JEI/EMI/REI and grab them instantly without typing in the search bar!
 
 ## Feature
 
@@ -33,4 +27,3 @@
 AE2 Tangible Bookmarks significantly improves the workflow between Applied Energistics 2 (AE2) and JE/EMI/REI
 
 Normally, retrieving an item from the AE2 terminal requires searching for it by name. With this mod, you can directly interact with items displayed in JEI's Bookmarks (Left) or (EMI/REI)’s favorite while the AE2 terminal is open.
-
