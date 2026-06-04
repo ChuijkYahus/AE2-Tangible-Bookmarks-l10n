@@ -9,7 +9,7 @@ import me.myogoo.ae2tb.AE2TB;
 import me.myogoo.ae2tb.config.AE2TBConfig;
 import me.myogoo.ae2tb.init.AE2TBItems;
 import me.myogoo.ae2tb.mixin.MEStorageMenuStorageMixin;
-import me.myogoo.myotus.api.MyotusAPI.Terminal.TerminalUpgradeHelper;
+import me.myogoo.myotus.menu.TerminalUpgradeHelper;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
