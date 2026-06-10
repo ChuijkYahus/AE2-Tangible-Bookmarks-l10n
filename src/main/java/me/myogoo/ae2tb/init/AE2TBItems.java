@@ -21,7 +21,7 @@ public final class AE2TBItems {
     private static <T extends Item> DeferredItem<T> registerItem(String name, Supplier<T> supplier) {
 
         var item = REGISTER.register(name, supplier);
-        MyotusAPI.creativeTabRegistrar().creativeTabItem(item);
+        MyotusAPI.creativeTabs().registerCreativeTabItem(item);
         return item;
 
     }

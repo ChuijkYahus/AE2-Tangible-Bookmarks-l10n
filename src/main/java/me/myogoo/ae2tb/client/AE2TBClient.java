@@ -20,7 +20,8 @@ public final class AE2TBClient {
     }
 
     private static void clientSetup(FMLClientSetupEvent event) {
-        event.enqueueWork(() -> MyotusAPI.configRegistrar().registerTerminalConfigTab(new MyoConfigTab(
+        event.enqueueWork(() -> MyotusAPI.configTabs().registerTerminalConfigTab(new MyoConfigTab(
+                AE2TB.makeId("terminal_bookmarks"),
                 TranslateKey.CATEGORY.getTranslate(),
                 new ItemStack(AE2TBItems.TERMINAL_BOOKMARK_INTERACT_CARD.get()),
                 "ae2tb.json",
