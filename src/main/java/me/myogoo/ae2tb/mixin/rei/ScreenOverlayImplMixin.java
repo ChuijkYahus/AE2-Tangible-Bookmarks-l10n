@@ -10,7 +10,6 @@ import me.shedaniel.rei.impl.client.gui.ScreenOverlayImpl;
 import me.shedaniel.rei.impl.client.gui.widget.favorites.FavoritesListWidget;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
-
 import net.minecraft.world.item.ItemStack;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -22,7 +21,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.List;
 
-
 @Mixin(ScreenOverlayImpl.class)
 public abstract class ScreenOverlayImplMixin {
 
@@ -32,37 +30,31 @@ public abstract class ScreenOverlayImplMixin {
 
     @Inject(
             method = "mouseClicked",
-            at = @At(value = "TAIL"),
+            at = @At(value = "HEAD"),
             remap = false,
             cancellable = true)
     private void onMouseClicked(double mouseX, double mouseY, int button, CallbackInfoReturnable<Boolean> cir) {
         var player = Minecraft.getInstance().player;
         if (player == null) {
-            cir.setReturnValue(false);
             return;
         }
 
         if (!(player.containerMenu instanceof MEStorageMenu menu)) {
-            cir.setReturnValue(false);
             return;
         }
 
-        var favoritesWidget = this.widgets.stream()
-                .filter(widget -> widget instanceof FavoritesListWidget)
-                .map(widget -> (FavoritesListWidget) widget)
-                .findFirst().orElse(null);
+        var favoritesWidget = ae2tb$getFavoritesWidget();
         if (favoritesWidget == null) {
-            cir.setReturnValue(false);
             return;
         }
 
         ItemStack stack = favoritesWidget.getFocusedStack().cheatsAs().castValue();
         if (stack == null || stack.isEmpty()) {
-            cir.setReturnValue(false);
             return;
         }
-        if (isClicked(KeyBindings.PICKUP_SINGLE_ITEM, button)) {
-            HandleInteraction.sendPacket(menu, stack, InventoryAction.PICKUP_SINGLE);
+
+        if (isClicked(KeyBindings.PICKED_ITEM_AUTOCRAFTING, button)) {
+            HandleInteraction.sendPacket(menu, stack, InventoryAction.AUTO_CRAFT);
             cir.setReturnValue(true);
             return;
         }
@@ -71,16 +63,15 @@ public abstract class ScreenOverlayImplMixin {
             cir.setReturnValue(true);
             return;
         }
-        if (isClicked(KeyBindings.PICKED_ITEM_AUTOCRAFTING, button)) {
-            HandleInteraction.sendPacket(menu, stack, InventoryAction.AUTO_CRAFT);
+        if (isClicked(KeyBindings.PICKUP_SINGLE_ITEM, button)) {
+            HandleInteraction.sendPacket(menu, stack, InventoryAction.PICKUP_SINGLE);
             cir.setReturnValue(true);
-            return;
         }
     }
 
     @Inject(
             method = "keyPressed",
-            at = @At(value = "TAIL"),
+            at = @At(value = "HEAD"),
             remap = false,
             cancellable = true)
     private void onKeyPressed(int keyCode, int scanCode, int modifiers, CallbackInfoReturnable<Boolean> cir) {
@@ -93,10 +84,7 @@ public abstract class ScreenOverlayImplMixin {
             return;
         }
 
-        var favoritesWidget = this.widgets.stream()
-                .filter(widget -> widget instanceof FavoritesListWidget)
-                .map(widget -> (FavoritesListWidget) widget)
-                .findFirst().orElse(null);
+        var favoritesWidget = ae2tb$getFavoritesWidget();
         if (favoritesWidget == null) {
             return;
         }
@@ -106,8 +94,8 @@ public abstract class ScreenOverlayImplMixin {
             return;
         }
 
-        if (isPressed(KeyBindings.PICKUP_SINGLE_ITEM, keyCode, scanCode)) {
-            HandleInteraction.sendPacket(menu, stack, InventoryAction.PICKUP_SINGLE);
+        if (isPressed(KeyBindings.PICKED_ITEM_AUTOCRAFTING, keyCode, scanCode)) {
+            HandleInteraction.sendPacket(menu, stack, InventoryAction.AUTO_CRAFT);
             cir.setReturnValue(true);
             return;
         }
@@ -116,10 +104,18 @@ public abstract class ScreenOverlayImplMixin {
             cir.setReturnValue(true);
             return;
         }
-        if (isPressed(KeyBindings.PICKED_ITEM_AUTOCRAFTING, keyCode, scanCode)) {
-            HandleInteraction.sendPacket(menu, stack, InventoryAction.AUTO_CRAFT);
+        if (isPressed(KeyBindings.PICKUP_SINGLE_ITEM, keyCode, scanCode)) {
+            HandleInteraction.sendPacket(menu, stack, InventoryAction.PICKUP_SINGLE);
             cir.setReturnValue(true);
         }
+    }
+
+    @Unique
+    private FavoritesListWidget ae2tb$getFavoritesWidget() {
+        return this.widgets.stream()
+                .filter(widget -> widget instanceof FavoritesListWidget)
+                .map(widget -> (FavoritesListWidget) widget)
+                .findFirst().orElse(null);
     }
 
     @Unique

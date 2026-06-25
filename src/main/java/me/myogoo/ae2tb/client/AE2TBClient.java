@@ -2,10 +2,9 @@ package me.myogoo.ae2tb.client;
 
 import me.myogoo.ae2tb.AE2TB;
 import me.myogoo.ae2tb.init.AE2TBConfigTab;
-import me.myogoo.ae2tb.init.AE2TBItems;
 import me.myogoo.myotus.api.MyotusAPI;
 import me.myogoo.myotus.api.config.MyoConfigTab;
-import net.minecraft.world.item.ItemStack;
+import me.myogoo.myotus.client.gui.MyoIcon;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
@@ -23,7 +22,7 @@ public final class AE2TBClient {
         event.enqueueWork(() -> MyotusAPI.configTabs().registerTerminalConfigTab(new MyoConfigTab(
                 AE2TB.makeId("terminal_bookmarks"),
                 TranslateKey.CATEGORY.getTranslate(),
-                new ItemStack(AE2TBItems.TERMINAL_BOOKMARK_INTERACT_CARD.get()),
+                MyoIcon.AE2TB_CONFIG,
                 "ae2tb.json",
                 new AE2TBConfigTab()
         )));

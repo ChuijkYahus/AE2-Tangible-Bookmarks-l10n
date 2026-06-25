@@ -8,13 +8,14 @@
     "MEStorageMenuStorageMixin"
   ],
   "client": [
-    "emi.EmiConfigMixin",
-    "emi.EmiConfigScreenMixin",
     "emi.EmiFavoritesMixin",
     "emi.EmiScreenManagerMixin",
     "emi.ItemEmiStackMixin",
+    "jei.BookmarkInputHandlerMixin",
+    "jei.BookmarkOverlayAmountMixin",
     "jei.CombinedRecipeFocusSourceMixin",
     "jei.FocusInputHandlerMixin",
+    "rei.ReiFavoriteAmountMixin",
     "rei.ScreenOverlayImplMixin"
   ],
   "injectors": {

@@ -32,7 +32,7 @@ public class Plugin implements IMixinConfigPlugin {
         }
 
         if (mixinClassName.contains("jei")) {
-            return !isLoaded("emi") && isLoaded("jei");
+            return isLoaded("jei") && !isLoaded("toomanyrecipeviewers");
         }
 
         return true;
