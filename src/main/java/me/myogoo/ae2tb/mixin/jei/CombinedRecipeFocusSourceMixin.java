@@ -18,9 +18,6 @@ public class CombinedRecipeFocusSourceMixin {
             remap = false
     )
     private static void ae2tb$isConflictingVanillaMouseButton(UserInput input, IInternalKeyMappings keyBindings, CallbackInfoReturnable<Boolean> cir) {
-        cir.setReturnValue(cir.getReturnValue()
-                || input.is(KeyBindings.PICKUP_SINGLE_ITEM)
-                || input.is(KeyBindings.PICKUP_SET_ITEM)
-                || input.is(KeyBindings.PICKED_ITEM_AUTOCRAFTING));
+        cir.setReturnValue(cir.getReturnValue() || input.getKey().getName().equals("key.mouse.middle"));
     }
 }

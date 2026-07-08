@@ -103,7 +103,9 @@ public class BookmarkOverlayAmountMixin {
 
     @Unique
     private boolean ae2tb$canRenderAmount(MEStorageMenu menu) {
-        return AE2TBConfig.QoL()
-                || TerminalUpgradeHelper.hasUpgrade(menu, AE2TBItems.TERMINAL_BOOKMARK_INTERACT_CARD.get());
+        return AE2TBConfig.enableBookmarkAmountCounting()
+                && AE2TBConfig.showBookmarkAmounts()
+                && (AE2TBConfig.QoL()
+                || TerminalUpgradeHelper.hasUpgrade(menu, AE2TBItems.TERMINAL_BOOKMARK_INTERACT_CARD.get()));
     }
 }

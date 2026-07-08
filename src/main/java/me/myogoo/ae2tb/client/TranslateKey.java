@@ -9,6 +9,7 @@ public enum TranslateKey {
     PICKUP_SET_ITEM("key.ae2tb.pickup_set_item"),
     PICKUP_SINGLE_ITEM("key.ae2tb.pickup_single_item"),
     PICKED_ITEM_AUTOCRAFTING("key.ae2tb.picked_item_autocrafting"),
+    SHOW_BOOKMARK_AMOUNTS("gui.ae2tb.config.show_bookmark_amounts"),
 
     TERMINAL_BOOKMARK_INTERACT_CARD_DESC("item.ae2tb.terminal_bookmark_interact_card.desc");
 

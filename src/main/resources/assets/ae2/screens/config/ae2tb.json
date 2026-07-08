@@ -14,19 +14,24 @@
     }
   },
   "widgets": {
-    "binding:pickup_single": {
+    "show_bookmark_amounts": {
       "left": 10,
       "top": 20,
       "width": 180
     },
-    "binding:pickup_set": {
+    "binding:pickup_single": {
       "left": 10,
       "top": 50,
       "width": 180
     },
-    "binding:picked_autocrafting": {
+    "binding:pickup_set": {
       "left": 10,
       "top": 80,
+      "width": 180
+    },
+    "binding:picked_autocrafting": {
+      "left": 10,
+      "top": 110,
       "width": 180
     }
   }
