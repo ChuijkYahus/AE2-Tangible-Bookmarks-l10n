@@ -27,11 +27,6 @@ repositories {
         url = "https://maven.terraformersmc.com/"
     }
 
-    //curseMaven
-    maven {
-        url "https://cursemaven.com"
-    }
-
     maven {
         url = "https://api.modrinth.com/maven"
     }
@@ -144,7 +139,6 @@ dependencies {
     switch (project.itemListMod) {
         case "jei":
             runtimeOnly "mezz.jei:jei-${minecraft_version}-neoforge:${JEI_version}"
-            runtimeOnly "curse.maven:ae2-jei-integration-1074338:5748513"
             break;
         case "rei":
             runtimeOnly "me.shedaniel:RoughlyEnoughItems-neoforge:${REI_version}"
@@ -154,7 +148,6 @@ dependencies {
             break;
         case "emjei":
             runtimeOnly "mezz.jei:jei-${minecraft_version}-neoforge:${JEI_version}"
-            runtimeOnly "curse.maven:ae2-jei-integration-1074338:5748513"
             runtimeOnly "dev.emi:emi-neoforge:${EMI_version}"
             break;
     }
