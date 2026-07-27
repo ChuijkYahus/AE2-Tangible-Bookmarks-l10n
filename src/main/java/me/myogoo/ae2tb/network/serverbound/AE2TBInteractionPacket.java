@@ -45,7 +45,7 @@ public record AE2TBInteractionPacket(
     @Override
     public void handleOnServer(ServerPlayer player) {
         if (player.containerMenu instanceof MEStorageMenu meStorageMenu) {
-            if (!AE2TBConfig.allowBookmarkInteractionWithoutUpgrade()
+            if (!AE2TBConfig.QoL()
                     && !TerminalUpgradeHelper.hasUpgrade(meStorageMenu, AE2TBItems.TERMINAL_BOOKMARK_INTERACT_CARD.get())) {
                 return;
             }

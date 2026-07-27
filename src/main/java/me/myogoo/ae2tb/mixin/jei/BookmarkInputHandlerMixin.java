@@ -8,7 +8,7 @@ import mezz.jei.common.input.IInternalKeyMappings;
 import mezz.jei.gui.input.CombinedRecipeFocusSource;
 import mezz.jei.gui.input.IUserInputHandler;
 import mezz.jei.gui.input.UserInput;
-import mezz.jei.gui.input.handlers.FocusInputHandler;
+import mezz.jei.gui.input.handlers.BookmarkInputHandler;
 import mezz.jei.gui.input.handlers.SameElementInputHandler;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.gui.screens.Screen;
@@ -22,29 +22,27 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.Optional;
 
-@Mixin(FocusInputHandler.class)
-public class FocusInputHandlerMixin {
+@Mixin(BookmarkInputHandler.class)
+public class BookmarkInputHandlerMixin {
     @Final
     @Shadow
     private CombinedRecipeFocusSource focusSource;
 
     @Inject(
-            method = "handleUserInput(Lnet/minecraft/client/gui/screens/Screen;Lmezz/jei/gui/input/UserInput;Lmezz/jei/common/input/IInternalKeyMappings;)Ljava/util/Optional;",
-            at = @At(value = "INVOKE", target = "Ljava/util/Optional;empty()Ljava/util/Optional;", ordinal = 0),
+            method = "handleUserInput",
+            at = @At("HEAD"),
             cancellable = true,
-            require = 1,
-            expect = 1,
             remap = false
     )
-    private void ae2tb$handleUserInput(Screen rawScreen, UserInput input, IInternalKeyMappings keyBindings, CallbackInfoReturnable<Optional<IUserInputHandler>> cir) {
-        handleMiddleClick(rawScreen, input, keyBindings, KeyBindings.PICKED_ITEM_AUTOCRAFTING, InventoryAction.AUTO_CRAFT)
-                .or(() -> handleMiddleClick(rawScreen, input, keyBindings, KeyBindings.PICKUP_SET_ITEM, InventoryAction.SHIFT_CLICK))
-                .or(() -> handleMiddleClick(rawScreen, input, keyBindings, KeyBindings.PICKUP_SINGLE_ITEM, InventoryAction.PICKUP_SINGLE))
+    private void ae2tb$handleBookmarkUserInput(Screen rawScreen, UserInput input, IInternalKeyMappings keyBindings, CallbackInfoReturnable<Optional<IUserInputHandler>> cir) {
+        ae2tb$handleBookmarkAction(rawScreen, input, keyBindings, KeyBindings.PICKED_ITEM_AUTOCRAFTING, InventoryAction.AUTO_CRAFT)
+                .or(() -> ae2tb$handleBookmarkAction(rawScreen, input, keyBindings, KeyBindings.PICKUP_SET_ITEM, InventoryAction.SHIFT_CLICK))
+                .or(() -> ae2tb$handleBookmarkAction(rawScreen, input, keyBindings, KeyBindings.PICKUP_SINGLE_ITEM, InventoryAction.PICKUP_SINGLE))
                 .ifPresent(handler -> cir.setReturnValue(Optional.of(handler)));
     }
 
     @Unique
-    private Optional<IUserInputHandler> handleMiddleClick(Screen rawScreen, UserInput input, IInternalKeyMappings keyBindings, KeyMapping keyMapping, InventoryAction action) {
+    private Optional<IUserInputHandler> ae2tb$handleBookmarkAction(Screen rawScreen, UserInput input, IInternalKeyMappings keyBindings, KeyMapping keyMapping, InventoryAction action) {
         if (!input.is(keyMapping)) {
             return Optional.empty();
         }
