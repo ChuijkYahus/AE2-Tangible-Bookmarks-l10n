@@ -1,6 +1,5 @@
 package me.myogoo.ae2tb.mixin.jei;
 
-import me.myogoo.ae2tb.client.KeyBindings;
 import mezz.jei.common.input.IInternalKeyMappings;
 import mezz.jei.gui.input.CombinedRecipeFocusSource;
 import mezz.jei.gui.input.UserInput;

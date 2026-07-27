@@ -12,6 +12,7 @@ import me.shedaniel.rei.impl.client.gui.widget.EntryWidget;
 import me.shedaniel.rei.impl.client.gui.widget.region.RegionEntryWidget;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.world.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -34,7 +35,12 @@ public abstract class ReiFavoriteAmountMixin {
             return;
         }
 
-        var player = Minecraft.getInstance().player;
+        var minecraft = Minecraft.getInstance();
+        if (!(minecraft.screen instanceof AbstractContainerScreen<?>)) {
+            return;
+        }
+
+        var player = minecraft.player;
         if (player == null || !(player.containerMenu instanceof MEStorageMenu menu)) {
             return;
         }

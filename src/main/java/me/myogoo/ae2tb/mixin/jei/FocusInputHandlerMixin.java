@@ -6,7 +6,6 @@ import me.myogoo.ae2tb.client.KeyBindings;
 import me.myogoo.ae2tb.integration.ae2.HandleInteraction;
 import mezz.jei.common.input.IInternalKeyMappings;
 import mezz.jei.gui.input.CombinedRecipeFocusSource;
-import mezz.jei.gui.input.IClickableIngredientInternal;
 import mezz.jei.gui.input.IUserInputHandler;
 import mezz.jei.gui.input.UserInput;
 import mezz.jei.gui.input.handlers.FocusInputHandler;
@@ -30,12 +29,14 @@ public class FocusInputHandlerMixin {
     private CombinedRecipeFocusSource focusSource;
 
     @Inject(
-            method = "handleUserInput",
-            at = @At("HEAD"),
+            method = "handleUserInput(Lnet/minecraft/client/gui/screens/Screen;Lmezz/jei/gui/input/UserInput;Lmezz/jei/common/input/IInternalKeyMappings;)Ljava/util/Optional;",
+            at = @At(value = "INVOKE", target = "Ljava/util/Optional;empty()Ljava/util/Optional;", ordinal = 0),
             cancellable = true,
+            require = 1,
+            expect = 1,
             remap = false
     )
-    public void handleUserInput(Screen rawScreen, UserInput input, IInternalKeyMappings keyBindings, CallbackInfoReturnable<Optional<IUserInputHandler>> cir) {
+    private void ae2tb$handleUserInput(Screen rawScreen, UserInput input, IInternalKeyMappings keyBindings, CallbackInfoReturnable<Optional<IUserInputHandler>> cir) {
         handleMiddleClick(rawScreen, input, keyBindings, KeyBindings.PICKED_ITEM_AUTOCRAFTING, InventoryAction.AUTO_CRAFT)
                 .or(() -> handleMiddleClick(rawScreen, input, keyBindings, KeyBindings.PICKUP_SET_ITEM, InventoryAction.SHIFT_CLICK))
                 .or(() -> handleMiddleClick(rawScreen, input, keyBindings, KeyBindings.PICKUP_SINGLE_ITEM, InventoryAction.PICKUP_SINGLE))
@@ -44,28 +45,26 @@ public class FocusInputHandlerMixin {
 
     @Unique
     private Optional<IUserInputHandler> handleMiddleClick(Screen rawScreen, UserInput input, IInternalKeyMappings keyBindings, KeyMapping keyMapping, InventoryAction action) {
-        if(!input.is(keyMapping)) {
+        if (!input.is(keyMapping)) {
             return Optional.empty();
         }
-        var minecraft = rawScreen.getMinecraft();
-        var localPlayer = minecraft.player;
 
-        if (localPlayer != null && localPlayer.containerMenu instanceof MEStorageMenu menu) {
-            var clicked = focusSource.getIngredientUnderMouse(input, keyBindings)
-                    .filter(x -> x.getElement().getBookmark().isPresent())
-                    .filter(x -> x.getElement().getTypedIngredient().getItemStack().isPresent())
-                    .findFirst();
-
-            return clicked.map(target -> {
-                if (!input.isSimulate()) {
-                    var itemStack = target.getElement().getTypedIngredient().getItemStack();
-                    itemStack.ifPresent(stack -> HandleInteraction.sendPacket(menu, stack, action));
-                }
-
-                return new SameElementInputHandler((IUserInputHandler) (Object) this, target::isMouseOver);
-            });
+        var localPlayer = rawScreen.getMinecraft().player;
+        if (localPlayer == null || !(localPlayer.containerMenu instanceof MEStorageMenu menu)) {
+            return Optional.empty();
         }
 
-        return Optional.empty();
+        var clicked = focusSource.getIngredientUnderMouse(input, keyBindings)
+                .filter(target -> target.getElement().getBookmark().isPresent())
+                .filter(target -> target.getElement().getTypedIngredient().getItemStack().isPresent())
+                .findFirst();
+
+        return clicked.map(target -> {
+            if (!input.isSimulate()) {
+                target.getElement().getTypedIngredient().getItemStack()
+                        .ifPresent(stack -> HandleInteraction.sendPacket(menu, stack, action));
+            }
+            return new SameElementInputHandler((IUserInputHandler) (Object) this, target::isMouseOver);
+        });
     }
 }

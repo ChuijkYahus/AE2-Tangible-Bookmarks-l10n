@@ -12,6 +12,7 @@ import mezz.jei.gui.overlay.IngredientListSlot;
 import mezz.jei.gui.overlay.bookmarks.BookmarkOverlay;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.world.item.ItemStack;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -32,6 +33,10 @@ public class BookmarkOverlayAmountMixin {
 
     @Inject(method = "drawScreen", at = @At("TAIL"), remap = false)
     private void ae2tb$drawBookmarkAmounts(Minecraft minecraft, GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick, CallbackInfo ci) {
+        if (!(minecraft.screen instanceof AbstractContainerScreen<?>)) {
+            return;
+        }
+
         var player = minecraft.player;
         if (player == null || !(player.containerMenu instanceof MEStorageMenu menu)) {
             return;
