@@ -3,16 +3,17 @@ package me.myogoo.ae2tb.mixin.rei;
 import appeng.api.stacks.AmountFormat;
 import appeng.api.stacks.GenericStack;
 import appeng.menu.me.common.MEStorageMenu;
+import me.myogoo.ae2tb.client.ScreenContexts;
 import me.myogoo.ae2tb.config.AE2TBConfig;
 import me.myogoo.ae2tb.init.AE2TBItems;
 import me.myogoo.myotus.menu.TerminalUpgradeHelper;
+import me.shedaniel.rei.api.client.gui.screen.DisplayScreen;
 import me.shedaniel.rei.api.client.favorites.FavoriteEntry;
 import me.shedaniel.rei.api.common.entry.EntryStack;
 import me.shedaniel.rei.impl.client.gui.widget.EntryWidget;
 import me.shedaniel.rei.impl.client.gui.widget.region.RegionEntryWidget;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.world.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -36,7 +37,7 @@ public abstract class ReiFavoriteAmountMixin {
         }
 
         var minecraft = Minecraft.getInstance();
-        if (!(minecraft.screen instanceof AbstractContainerScreen<?>)) {
+        if (!ScreenContexts.isTerminalOrRecipeViewerScreen(minecraft.screen, DisplayScreen.class)) {
             return;
         }
 

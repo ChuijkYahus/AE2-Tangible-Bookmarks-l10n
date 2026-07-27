@@ -8,12 +8,13 @@ import dev.emi.emi.api.stack.EmiIngredient;
 import dev.emi.emi.api.stack.EmiStack;
 import dev.emi.emi.runtime.EmiDrawContext;
 import dev.emi.emi.runtime.EmiFavorite;
+import dev.emi.emi.screen.RecipeScreen;
+import me.myogoo.ae2tb.client.ScreenContexts;
 import me.myogoo.ae2tb.config.AE2TBConfig;
 import me.myogoo.ae2tb.init.AE2TBItems;
 import me.myogoo.myotus.menu.TerminalUpgradeHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
@@ -48,7 +49,7 @@ public abstract class ItemEmiStackMixin {
         }
 
         var minecraft = Minecraft.getInstance();
-        if (!(minecraft.screen instanceof AbstractContainerScreen<?>)) {
+        if (!ScreenContexts.isTerminalOrRecipeViewerScreen(minecraft.screen, RecipeScreen.class)) {
             return;
         }
 

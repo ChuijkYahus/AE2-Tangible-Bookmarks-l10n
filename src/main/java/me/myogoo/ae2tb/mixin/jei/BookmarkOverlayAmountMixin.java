@@ -3,16 +3,17 @@ package me.myogoo.ae2tb.mixin.jei;
 import appeng.api.stacks.AmountFormat;
 import appeng.api.stacks.GenericStack;
 import appeng.menu.me.common.MEStorageMenu;
+import me.myogoo.ae2tb.client.ScreenContexts;
 import me.myogoo.ae2tb.config.AE2TBConfig;
 import me.myogoo.ae2tb.init.AE2TBItems;
 import me.myogoo.myotus.menu.TerminalUpgradeHelper;
 import mezz.jei.common.util.ImmutableRect2i;
+import mezz.jei.gui.recipes.RecipesGui;
 import mezz.jei.gui.overlay.IngredientGridWithNavigation;
 import mezz.jei.gui.overlay.IngredientListSlot;
 import mezz.jei.gui.overlay.bookmarks.BookmarkOverlay;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.world.item.ItemStack;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -33,7 +34,7 @@ public class BookmarkOverlayAmountMixin {
 
     @Inject(method = "drawScreen", at = @At("TAIL"), remap = false)
     private void ae2tb$drawBookmarkAmounts(Minecraft minecraft, GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick, CallbackInfo ci) {
-        if (!(minecraft.screen instanceof AbstractContainerScreen<?>)) {
+        if (!ScreenContexts.isTerminalOrRecipeViewerScreen(minecraft.screen, RecipesGui.class)) {
             return;
         }
 
