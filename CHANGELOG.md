@@ -1,5 +1,10 @@
 # Changelog
 
+## 19.1.1
+
+### Fixed
+- Removed the development-only AE2 JEI Integration dependency so release builds do not depend on CurseMaven.
+
 ## 19.1.0
 
 ### Features
