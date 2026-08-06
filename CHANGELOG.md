@@ -1,5 +1,10 @@
 # Changelog
 
+## 19.1.2
+
+### Fixed
+- Updated the JEI bookmark overlay integration for JEI 19.43, whose ingredient grid classes moved packages.
+
 ## 19.1.1
 
 ### Fixed
