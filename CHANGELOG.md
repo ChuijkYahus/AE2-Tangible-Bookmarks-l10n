@@ -1,5 +1,12 @@
 # Changelog
 
+## 19.1.3
+
+### Fixed
+- Restore JEI bookmark interactions by registering the bookmark-specific input mixin.
+- Update the bookmark overlay integration for JEI 19.32.
+- Require NeoForge 21.1.238 or newer and JEI 19.32.0.359 through 19.42.x when JEI is installed.
+
 ## 19.1.2
 
 ### Fixed

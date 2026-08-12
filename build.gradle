@@ -175,7 +175,8 @@ var generateModMetadata = tasks.register("generateModMetadata", ProcessResources
                              mod_version            : mod_version,
                              mod_authors            : mod_authors,
                              mod_description        : mod_description,
-                             Myotus_version         : Myotus_version]
+                             Myotus_version         : Myotus_version,
+                             JEI_version_range      : JEI_version_range]
     inputs.properties replaceProperties
     expand replaceProperties
     from "src/main/templates"

@@ -11,6 +11,7 @@
     "emi.EmiFavoritesMixin",
     "emi.EmiScreenManagerMixin",
     "emi.ItemEmiStackMixin",
+    "jei.BookmarkInputHandlerMixin",
     "jei.BookmarkOverlayAmountMixin",
     "jei.CombinedRecipeFocusSourceMixin",
     "jei.FocusInputHandlerMixin",

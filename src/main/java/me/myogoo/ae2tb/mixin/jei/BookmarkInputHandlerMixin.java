@@ -29,9 +29,11 @@ public class BookmarkInputHandlerMixin {
     private CombinedRecipeFocusSource focusSource;
 
     @Inject(
-            method = "handleUserInput",
+            method = "handleUserInput(Lnet/minecraft/client/gui/screens/Screen;Lmezz/jei/gui/input/UserInput;Lmezz/jei/common/input/IInternalKeyMappings;)Ljava/util/Optional;",
             at = @At("HEAD"),
             cancellable = true,
+            require = 1,
+            expect = 1,
             remap = false
     )
     private void ae2tb$handleBookmarkUserInput(Screen rawScreen, UserInput input, IInternalKeyMappings keyBindings, CallbackInfoReturnable<Optional<IUserInputHandler>> cir) {

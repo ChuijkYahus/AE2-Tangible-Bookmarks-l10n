@@ -30,13 +30,17 @@ public class FocusInputHandlerMixin {
 
     @Inject(
             method = "handleUserInput(Lnet/minecraft/client/gui/screens/Screen;Lmezz/jei/gui/input/UserInput;Lmezz/jei/common/input/IInternalKeyMappings;)Ljava/util/Optional;",
-            at = @At(value = "INVOKE", target = "Ljava/util/Optional;empty()Ljava/util/Optional;", ordinal = 0),
+            at = @At("TAIL"),
             cancellable = true,
             require = 1,
             expect = 1,
             remap = false
     )
     private void ae2tb$handleUserInput(Screen rawScreen, UserInput input, IInternalKeyMappings keyBindings, CallbackInfoReturnable<Optional<IUserInputHandler>> cir) {
+        if (cir.getReturnValue().isPresent()) {
+            return;
+        }
+
         handleMiddleClick(rawScreen, input, keyBindings, KeyBindings.PICKED_ITEM_AUTOCRAFTING, InventoryAction.AUTO_CRAFT)
                 .or(() -> handleMiddleClick(rawScreen, input, keyBindings, KeyBindings.PICKUP_SET_ITEM, InventoryAction.SHIFT_CLICK))
                 .or(() -> handleMiddleClick(rawScreen, input, keyBindings, KeyBindings.PICKUP_SINGLE_ITEM, InventoryAction.PICKUP_SINGLE))

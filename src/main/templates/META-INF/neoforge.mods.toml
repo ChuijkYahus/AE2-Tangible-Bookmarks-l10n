@@ -37,3 +37,10 @@ type = "REQUIRED"
 ordering="AFTER"
 side="BOTH"
 versionRange = "[${Myotus_version},)"
+
+[[dependencies."${mod_id}"]]
+modId = "jei"
+type = "OPTIONAL"
+ordering="AFTER"
+side="CLIENT"
+versionRange = "${JEI_version_range}"
