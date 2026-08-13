@@ -9,8 +9,8 @@ import me.myogoo.ae2tb.init.AE2TBItems;
 import me.myogoo.myotus.menu.TerminalUpgradeHelper;
 import mezz.jei.common.util.ImmutableRect2i;
 import mezz.jei.gui.recipes.RecipesGui;
-import mezz.jei.gui.overlay.IngredientGridWithNavigation;
-import mezz.jei.gui.overlay.IngredientListSlot;
+import mezz.jei.gui.overlay.ingredients.IngredientGridWithNavigation;
+import mezz.jei.gui.overlay.ingredients.IngredientListSlot;
 import mezz.jei.gui.overlay.bookmarks.BookmarkOverlay;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
@@ -33,7 +33,7 @@ public class BookmarkOverlayAmountMixin {
     private static final float AE2TB_AMOUNT_SCALE = 0.65F;
 
     @Inject(
-            method = "drawScreen(Lnet/minecraft/client/Minecraft;Lnet/minecraft/client/gui/GuiGraphics;IIF)V",
+            method = "drawForeground(Lnet/minecraft/client/Minecraft;Lnet/minecraft/client/gui/GuiGraphics;IIF)V",
             at = @At("TAIL"),
             require = 1,
             expect = 1,
